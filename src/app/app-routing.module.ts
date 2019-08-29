@@ -6,8 +6,9 @@ export const routes: Routes = [
 ];
 
 @NgModule({
+    // forRoot diz que esse módulo de rotas será único na aplicação
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 
-export class  AppRoutingModule {}
+export class AppRoutingModule { }
