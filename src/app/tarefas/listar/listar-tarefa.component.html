@@ -1,0 +1,34 @@
+<div class="card-body">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="text-center">ID</th>
+                <th scope="col" class="text-center">Nome</th>
+                <th scope="col" class="text-center">Descrição</th>
+                <th scope="col" class="text-center">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [class.bg-success]="tarefa.concluida" *ngFor="let tarefa of tarefas">
+                <td [class.font-italic]="tarefa.concluida" class=" text-center ">{{ tarefa.id }}</td>
+                <td [class.font-italic]="tarefa.concluida" class="text-center">{{ tarefa.nome }}</td>
+                <td [class.font-italic]="tarefa.concluida" class="text-center">{{ tarefa.descricao }}</td>
+                <td class="text-center">
+                    <button class="btn btn-dark mr-3" title="Editar">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </button>
+                    <button class="btn btn-success mr-3" (click)="tarefa.concluida=!tarefa.concluida" title="Concluir">
+                        <i class="fa fa-check-square-o"></i>
+                    </button>
+                    <button class="btn btn-danger" title="Remover">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-dark font-weight-bold"><i class="fa fa-plus mr-2"></i> Nova tarefa </button>
+
+    <p *ngIf="tarefas.length==0" class="mt-5 text-center">Nenhuma tarefa cadastrada.</p>
+</div>
