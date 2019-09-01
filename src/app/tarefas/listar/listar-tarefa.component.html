@@ -14,14 +14,14 @@
                 <td [class.font-italic]="tarefa.concluida" class="text-center">{{ tarefa.nome }}</td>
                 <td [class.font-italic]="tarefa.concluida" class="text-center">{{ tarefa.descricao }}</td>
                 <td class="text-center">
-                    <button class="btn btn-dark mr-3" title="Editar">
+                    <button [routerLink]="['/tarefas/editar', tarefa.id]" class="btn btn-dark mr-3" title="Editar">
                         <i class="fa fa-pencil-square-o"></i>
                     </button>
-                    <button class="btn btn-success mr-3" (click)="tarefa.concluida=!tarefa.concluida" title="Concluir">
-                        <i class="fa fa-check-square-o"></i>
-                    </button>
-                    <button class="btn btn-danger" title="Remover">
+                    <button (click)="remover($event, tarefa)" class="btn btn-danger mr-3" title="Remover">
                         <i class="fa fa-trash"></i>
+                    </button>
+                    <button [disabled]="tarefa.concluida" class="btn btn-success" (click)="alterarStatus($event, tarefa)" title="Concluir">
+                        <i class="fa fa-check-square-o"></i>
                     </button>
                 </td>
             </tr>

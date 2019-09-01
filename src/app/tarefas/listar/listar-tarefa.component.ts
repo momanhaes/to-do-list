@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TarefaService } from '../shared/tarefa.service';
 import { Tarefa } from '../shared/tarefa.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-tarefa',
@@ -11,7 +12,7 @@ export class ListarTarefaComponent implements OnInit {
 
   tarefas: Tarefa[];
 
-  constructor(private tarefaSerivce: TarefaService) { }
+  constructor(private tarefaService: TarefaService) { }
 
   ngOnInit() {
     this.tarefas = this.listarTodos();
@@ -25,9 +26,48 @@ export class ListarTarefaComponent implements OnInit {
   }
 
   listarTodos(): Tarefa[] {
-    return this.tarefaSerivce.listarTodos();
+    return this.tarefaService.listarTodos();
   }
 
+  remover($event: any, tarefa: Tarefa): void {
+    $event.preventDefault();
 
+    // Swal.fire(
+    //   'Good job!',
+    //   'You clicked the button!',
+    //   'success'
+    // )
+
+    // Swal.fire({
+    //   title: 'Are you sure?',
+    //   text: "You won't be able to revert this!",
+    //   type: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Yes, delete it!'
+    // }).then((result) => {
+    //   if (result.value) {
+    //     Swal.fire(
+    //       'Deleted!',
+    //       'Your file has been deleted.',
+    //       'success'
+    //     )
+    //   }
+    // })
+
+    if (confirm(`Deseja remover a tarefa '${tarefa.nome}'?`)) {
+      this.tarefaService.remover(tarefa.id);
+      this.tarefas = this.listarTodos();
+    }
+  }
+
+  alterarStatus($event: any, tarefa: Tarefa): void {
+    $event.preventDefault();
+    if (confirm(`Deseja marcar a tarefa '${tarefa.nome}' como pronta?`)) {
+      this.tarefaService.alterarStatus(tarefa.id);
+      this.tarefas = this.listarTodos();
+    }
+  }
 
 }
