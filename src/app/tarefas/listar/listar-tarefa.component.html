@@ -28,7 +28,8 @@
         </tbody>
     </table>
 
-    <button class="btn btn-dark font-weight-bold"><i class="fa fa-plus mr-2"></i> Nova tarefa </button>
+    <button [routerLink]="['/tarefas/cadastrar']" class="btn btn-dark font-weight-bold"><i class="fa fa-plus mr-2"></i>
+        Nova tarefa </button>
 
     <p *ngIf="tarefas.length==0" class="mt-5 text-center">Nenhuma tarefa cadastrada.</p>
 </div>

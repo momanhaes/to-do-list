@@ -14,6 +14,7 @@ export class TarefaService {
 
   cadastrar(tarefa: Tarefa): void {
     const tarefas = this.listarTodos();
+    // getTime() retorna os milissegundos passados entre 1 de Janeiro de 1970 até a data atual.
     tarefa.id = new Date().getTime();
     tarefas.push(tarefa);
     localStorage['tarefas'] = JSON.stringify(tarefas);
