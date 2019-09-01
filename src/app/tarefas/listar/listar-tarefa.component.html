@@ -9,12 +9,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr [class.bg-success]="tarefa.concluida" *ngFor="let tarefa of tarefas">
-                <td [class.font-italic]="tarefa.concluida" class=" text-center ">{{ tarefa.id }}</td>
-                <td [class.font-italic]="tarefa.concluida" class="text-center">{{ tarefa.nome }}</td>
-                <td [class.font-italic]="tarefa.concluida" class="text-center">{{ tarefa.descricao }}</td>
+            <tr [class.bg-warning]="tarefa.concluida" *ngFor="let tarefa of tarefas">
+                <td [tarefaConcluida]="tarefa.concluida" [class.font-italic]="tarefa.concluida" class=" text-center">
+                    {{ tarefa.id }}</td>
+                <td [tarefaConcluida]="tarefa.concluida" [class.font-italic]="tarefa.concluida" class="text-center">
+                    {{ tarefa.nome }}</td>
+                <td [tarefaConcluida]="tarefa.concluida" [class.font-italic]="tarefa.concluida" class="text-center">
+                    {{ tarefa.descricao }}</td>
                 <td class="text-center">
-                    <button [routerLink]="['/tarefas/editar', tarefa.id]" class="btn btn-dark mr-3" title="Editar">
+                    <button [disabled]="tarefa.concluida" [routerLink]="['/tarefas/editar', tarefa.id]" class="btn btn-dark mr-3" title="Editar">
                         <i class="fa fa-pencil-square-o"></i>
                     </button>
                     <button (click)="remover($event, tarefa)" class="btn btn-danger mr-3" title="Remover">
@@ -31,5 +34,5 @@
     <button [routerLink]="['/tarefas/cadastrar']" class="btn btn-dark font-weight-bold"><i class="fa fa-plus mr-2"></i>
         Nova tarefa </button>
 
-    <p *ngIf="tarefas.length==0" class="mt-5 text-center">Nenhuma tarefa cadastrada.</p>
+    <p *ngIf="tarefas.length==0" class="mt-5 text-center">Você não possui tarefas cadastradas <i class="fa fa-frown-o"></i></p>
 </div>
