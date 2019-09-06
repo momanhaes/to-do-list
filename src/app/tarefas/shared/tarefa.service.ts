@@ -8,6 +8,7 @@ export class TarefaService {
 
   constructor() { }
   listarTodos(): Tarefa[] {
+    // tslint:disable-next-line: no-string-literal
     const tarefas = localStorage['tarefas'];
     return tarefas ? JSON.parse(tarefas) : [];
   }
@@ -17,6 +18,7 @@ export class TarefaService {
     // getTime() retorna os milissegundos passados entre 1 de Janeiro de 1970 até a data atual.
     tarefa.id = new Date().getTime();
     tarefas.push(tarefa);
+    // tslint:disable-next-line: no-string-literal
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
@@ -32,12 +34,14 @@ export class TarefaService {
         objs[index] = tarefa;
       }
     });
+    // tslint:disable-next-line: no-string-literal
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
   remover(id: number): void {
     let tarefas: Tarefa[] = this.listarTodos();
     tarefas = tarefas.filter(tarefa => tarefa.id !== id);
+    // tslint:disable-next-line: no-string-literal
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
@@ -48,6 +52,7 @@ export class TarefaService {
         objs[index].concluida = !obj.concluida;
       }
     });
+    // tslint:disable-next-line: no-string-literal
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 

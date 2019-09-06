@@ -1,3 +1,9 @@
 /* html {
     background-color: #cecece;
 } */
+
+.centralizado {
+    position: absolute;
+    left: 50%;
+    top: 50%;        
+}
