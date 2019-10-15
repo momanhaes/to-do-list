@@ -1,6 +1,7 @@
 import { Directive, OnInit, Input, ElementRef } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line: directive-selector
   selector: '[tarefaConcluida]'
 })
 export class TarefaConcluidaDirective implements OnInit {

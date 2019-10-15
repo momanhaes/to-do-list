@@ -54,7 +54,7 @@ export class ListarTarefaComponent implements OnInit {
         this.tarefaService.remover(tarefa.id);
         this.tarefas = this.listarTodos();
       }
-    })
+    });
   }
 
   alterarStatus($event: any, tarefa: Tarefa): void {
