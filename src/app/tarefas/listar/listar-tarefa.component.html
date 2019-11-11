@@ -1,38 +1,73 @@
 <div class="card-body">
-    <table class="table table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="text-center">ID</th>
-                <th scope="col" class="text-center">Nome</th>
-                <th scope="col" class="text-center">Descrição</th>
-                <th scope="col" class="text-center">Opções</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr [class.bg-warning]="tarefa.concluida" *ngFor="let tarefa of tarefas">
-                <td [tarefaConcluida]="tarefa.concluida" [class.font-italic]="tarefa.concluida" class=" text-center">
-                    {{ tarefa.id }}</td>
-                <td [tarefaConcluida]="tarefa.concluida" [class.font-italic]="tarefa.concluida" class="text-center">
-                    {{ tarefa.nome }}</td>
-                <td [tarefaConcluida]="tarefa.concluida" [class.font-italic]="tarefa.concluida" class="text-center">
-                    {{ tarefa.descricao }}</td>
-                <td class="text-center">
-                    <button [disabled]="tarefa.concluida" [routerLink]="['/tarefas/editar', tarefa.id]" class="btn btn-dark mr-3" title="Editar">
-                        <i class="fa fa-pencil-square-o"></i>
-                    </button>
-                    <button (click)="remover($event, tarefa)" class="btn btn-danger mr-3" title="Remover">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                    <button [disabled]="tarefa.concluida" class="btn btn-success" (click)="alterarStatus($event, tarefa)" title="Concluir">
-                        <i class="fa fa-check-square-o"></i>
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <button
+    [routerLink]="['/tarefas/cadastrar']"
+    class="btn btn-outline-dark font-weight-bold mb-3"
+  >
+    <i class="fa fa-plus mr-2"></i> Adicionar Tarefa
+  </button>
 
-    <button [routerLink]="['/tarefas/cadastrar']" class="btn btn-dark font-weight-bold"><i class="fa fa-plus mr-2"></i>
-        Adicionar Tarefa </button>
-
-    <p *ngIf="tarefas.length==0" class="mt-5 text-center">Você não possui tarefas cadastradas <i class="fa fa-frown-o"></i></p>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="text-center">ID</th>
+        <th scope="col" class="text-center">Nome</th>
+        <th scope="col" class="text-center">Descrição</th>
+        <th scope="col" class="text-center">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [class.bg-warning]="tarefa.concluida" *ngFor="let tarefa of tarefas">
+        <td
+          [tarefaConcluida]="tarefa.concluida"
+          [class.font-italic]="tarefa.concluida"
+          class=" text-center"
+        >
+          {{ tarefa.id }}
+        </td>
+        <td
+          [tarefaConcluida]="tarefa.concluida"
+          [class.font-italic]="tarefa.concluida"
+          class="text-center"
+        >
+          {{ tarefa.nome }}
+        </td>
+        <td
+          [tarefaConcluida]="tarefa.concluida"
+          [class.font-italic]="tarefa.concluida"
+          class="text-center"
+        >
+          {{ tarefa.descricao }}
+        </td>
+        <td class="text-center">
+          <button
+            [disabled]="tarefa.concluida"
+            [routerLink]="['/tarefas/editar', tarefa.id]"
+            class="btn btn-dark mr-3"
+            title="Editar"
+          >
+            <i class="fa fa-pencil-square-o"></i>
+          </button>
+          <button
+            (click)="remover($event, tarefa)"
+            class="btn btn-danger mr-3"
+            title="Remover"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+          <button
+            [disabled]="tarefa.concluida"
+            [class.btn-warning]="!tarefa.concluida"
+            class="btn btn-success text-light"
+            (click)="alterarStatus($event, tarefa)"
+            title="Concluir"
+          >
+            <i class="fa fa-check-square-o"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="tarefas.length == 0" class="mt-5 text-center">
+    Você não possui tarefas cadastradas <i class="fa fa-frown-o"></i>
+  </p>
 </div>

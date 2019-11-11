@@ -3,6 +3,7 @@ import { Tarefa } from '../shared/tarefa.model';
 import { TarefaService } from '../shared/tarefa.service';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastrar-tarefa',
@@ -47,4 +48,24 @@ export class CadastrarTarefaComponent implements OnInit {
       this.router.navigate(['/tarefas']);
     }
   }
+
+  cancelarForm(): void {
+    Swal.fire({
+      title: 'Você tem certeza que deseja sair?',
+      text: 'Todos os dados serão perdidos.',
+      type: 'warning',
+      background: '#fff',
+      showCancelButton: true,
+      confirmButtonColor: '#23272B',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
+    }).then((result) => {
+      if (result.value) {
+        this.router.navigate(['/tarefas']);
+      }
+    });
+
+  }
+
 }

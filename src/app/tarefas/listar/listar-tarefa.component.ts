@@ -38,16 +38,17 @@ export class ListarTarefaComponent implements OnInit {
       type: 'warning',
       background: '#fff',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#23272B',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Não'
     }).then((result) => {
       if (result.value) {
         Swal.fire({
           title: 'Sucesso!',
           text: 'Sua tarefa foi deletada.',
           confirmButtonText: 'Ok',
+          confirmButtonColor: '#23272B',
           type: 'success'
         }
         )
@@ -64,17 +65,22 @@ export class ListarTarefaComponent implements OnInit {
       title: 'Você tem certeza?',
       text: `Você está marcando a tarefa '${tarefa.nome}' como pronta. Os botões de concluir e editar desta tarefa ficarão desabilitados.`,
       type: 'warning',
+      background: '#fff',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#23272B',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sim',
+      cancelButtonText: 'Não'
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Sucesso!',
-          'Sua tarefa foi concluída com sucesso.',
-          'success'
-        )
+        Swal.fire({
+          title: 'Sucesso!',
+          text: 'Sua tarefa foi concluída com sucesso.',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: '#23272B',
+          type: 'success'
+        }
+        );
         this.tarefaService.alterarStatus(tarefa.id);
         this.tarefas = this.listarTodos();
       }
