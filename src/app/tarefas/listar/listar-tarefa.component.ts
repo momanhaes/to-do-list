@@ -50,8 +50,7 @@ export class ListarTarefaComponent implements OnInit {
           confirmButtonText: 'Ok',
           confirmButtonColor: '#23272B',
           type: 'success'
-        }
-        )
+        });
         this.tarefaService.remover(tarefa.id);
         this.tarefas = this.listarTodos();
       }
@@ -84,7 +83,8 @@ export class ListarTarefaComponent implements OnInit {
         this.tarefaService.alterarStatus(tarefa.id);
         this.tarefas = this.listarTodos();
       }
-    })
+    });
   }
-
 }
+
+
